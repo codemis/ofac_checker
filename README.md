@@ -11,7 +11,7 @@ rake ofac_checker:process
 * Ruby 1.9.2
 * MySql
 
-## Installing Ruby
+## Installing Ruby & MySql
 
 [Coming Soon]
 
