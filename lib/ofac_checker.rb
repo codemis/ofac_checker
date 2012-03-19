@@ -4,6 +4,7 @@ require 'logger'
 require 'active_record'
 require 'mysql'
 require 'tempfile'
+require 'csv'
 
 # Setup ActiveRecord so it does not need Rails
 # http://snippets.aktagon.com/snippets/257-How-to-use-ActiveRecord-without-Rails

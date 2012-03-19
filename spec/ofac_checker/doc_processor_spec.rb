@@ -40,4 +40,47 @@ describe DocProcessor do
 		it { @doc_processor.payees.should include('John Dillinger') }
 	end
 	
+	describe "#process" do
+		
+		before(:each) do
+			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
+			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'])
+			@doc_processor.process
+		end
+		
+		it "should create a result file" do
+			Dir.glob("#{SETTINGS['locations']['completed']}/*.csv").empty?.should === false
+		end
+		
+		it "should have the correct result file name" do
+			Dir.glob("#{SETTINGS['locations']['completed']}/*.csv").include?(@doc_processor.result_file).should === true
+		end
+		
+	end
+	
+	describe "final CSV" do
+		before(:each) do
+			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
+			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'])
+			@doc_processor.process
+			@payee_array = []
+			CSV.foreach("#{@doc_processor.result_file}") do |row|
+			    @payee_array.push row[0]
+			end
+		end
+		
+		it { @payee_array.should include('Mickey Thompson') }
+		
+		it { @payee_array.should include('Joe Dokes') }
+		
+		it { @payee_array.should include('Lana Turner') }
+		
+		it { @payee_array.should include('Harriet Frodenhausen') }
+		
+		it { @payee_array.should include('Maxwell Sanduski') }
+		
+		it { @payee_array.should include('John Dillinger') }
+		
+	end
+	
 end
