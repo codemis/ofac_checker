@@ -8,8 +8,20 @@ class DocProcessor
 	# initialize the document processor class
 	#
 	def initialize(doc, result_location)
+		@ach_reader = AchReader.new(doc)
 		@doc = doc
 		@result_file = File.join(result_location, "#{File.basename(@doc, '.*')}_complete.csv")
+	end
+	
+	# process the document
+	#
+	def process
+	end
+	
+	# the list of payees
+	#
+	def payees
+		@payees ||= @ach_reader.payees
 	end
 	
 end

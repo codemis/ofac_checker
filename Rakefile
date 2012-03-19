@@ -7,5 +7,10 @@ settings = YAML.load_file(File.join(File.dirname(__FILE__), "config/settings.yml
 
 task :check_doc do
 	staging_files = Dir.glob("#{settings['locations']['staging']}/*.ach")
-	DocProcessor.new(staging_files[0], settings['locations']['completed']) unless staging_files.empty?
+	DocProcessor.new(staging_files[0], settings['locations']['completed']).process unless staging_files.empty?
+end
+
+task :test_reader do
+	staging_files = Dir.glob("#{settings['locations']['staging']}/*.ach")
+	AchReader.new(staging_files[0]).payees
 end
