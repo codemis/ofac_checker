@@ -1,5 +1,4 @@
-# OFAC Reader
-## Still in Development
+# OFAC Reader [Still in Development]
 
 A Ruby script that looks through your bank .ach file, and compares the payees with the current [OFAC](http://www.treasury.gov/about/organizational-structure/offices/Pages/Office-of-Foreign-Assets-Control.aspx) list.  It will generate a CSV file with the results, and notify you when it has been completed by email.  Once you drop a file in the staging directory,  you can run a Rake command to process the document.  The command is:
 
