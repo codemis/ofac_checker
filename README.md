@@ -9,7 +9,11 @@ rake ofac_checker:process
 
 ## Installing Ruby
 
+[Coming Soon]
+
 ## Setting Up the CRON Task
+
+[Coming Soon]
 
 ## Configure the Script
 
