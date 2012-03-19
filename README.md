@@ -20,6 +20,6 @@ rake ofac_checker:process
 
 ## Development
 
-Questions or problems? Please post them on the [issue tracker](). You can contribute changes by forking the project and submitting a pull request.
+Questions or problems? Please post them on the [issue tracker](https://github.com/codemis/ofac_checker/issues). You can contribute changes by forking the project and submitting a pull request.
 
 This script is created by Johnathan Pulos and is under the MIT License.
