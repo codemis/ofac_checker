@@ -1,0 +1,3 @@
+locations:
+  staging: /path/to/staging/area
+  completed: /path/to/completed/results/area
