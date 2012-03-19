@@ -2,7 +2,7 @@ $LOAD_PATH.unshift File.expand_path(File.join('..', '..', 'db'), __FILE__)
 require 'yaml'
 require 'logger'
 require 'active_record'
-require 'sqlite3'
+require 'mysql'
 
 # Setup ActiveRecord so it does not need Rails
 # http://snippets.aktagon.com/snippets/257-How-to-use-ActiveRecord-without-Rails
@@ -13,6 +13,6 @@ ActiveRecord::Base.establish_connection('development')
 # Setup the database
 #
 require 'schema'
-#require 'ofac'
+require 'ofac'
 require 'ofac_checker/ach_reader'
 require 'ofac_checker/doc_processor'

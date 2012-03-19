@@ -18,7 +18,7 @@ namespace :ofac_checker do
 		staging_files = Dir.glob("#{staging_dir}/*.ach")
 		# update the OFAC database
 		#
-		# Rake::Task["ofac:update_data"].execute
+		Rake::Task["ofac:update_data"].execute
 		DocProcessor.new(staging_files[0], completed_dir).process unless staging_files.empty?
 	end
 

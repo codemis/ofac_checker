@@ -6,6 +6,11 @@ A Ruby script that looks through your bank .ach file, and compares the payees wi
 rake ofac_checker:process
 ```
 
+## Requirements
+
+* Ruby 1.9.2
+* MySql
+
 ## Installing Ruby
 
 [Coming Soon]
