@@ -1,6 +1,8 @@
 $LOAD_PATH.unshift File.expand_path('../lib', __FILE__)
 require 'ofac_checker'
 require 'yaml'
+require 'active_record'
+require 'sqlite3'
 # get the settings
 #
 settings_file = File.join(File.dirname(__FILE__), "config", "settings.yml")
