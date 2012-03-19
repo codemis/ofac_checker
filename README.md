@@ -9,8 +9,8 @@ A Ruby script that looks through your ach file, and compares the payees with the
 ## Configure the Script
 
 * copy the settings.example.yml to settings.yml
-* set **staging** to the location where your files will reside before being processed
-* set **completed** to the location where your results file will be stored
+* set **staging** to the location where your files will reside before being processed (default: file_bin/staging)
+* set **completed** to the location where your results file will be stored (default: file_bin/completed)
 
 
 ## Development
