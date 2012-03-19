@@ -1,2 +1,4 @@
 files/
 config/settings.yml
+log/
+db/data.sqlite3
