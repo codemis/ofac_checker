@@ -83,4 +83,14 @@ describe DocProcessor do
 		
 	end
 	
+	describe "#cleanup" do
+		
+		it "should remove the source file from the staging directory" do
+			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
+			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'])
+			@doc_processor.cleanup
+			Dir.glob("#{SETTINGS['locations']['staging']}/*.ach").empty?.should === true
+		end
+	end
+	
 end

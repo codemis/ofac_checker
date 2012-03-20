@@ -11,6 +11,7 @@ class DocProcessor
 		@ach_reader = AchReader.new(doc)
 		@doc = doc
 		@result_file = File.join(result_location, "#{File.basename(@doc, '.*')}_complete.csv")
+		@result_location = result_location
 	end
 	
 	# process the document
@@ -29,6 +30,13 @@ class DocProcessor
 				end # if possible hits
 			end # each payee
 		end # CSV 
+		cleanup
+	end
+	
+	# cleanup the process
+	#
+	def cleanup
+		FileUtils.mv("#{@doc}", File.join("#{@result_location}", "#{File.basename(@doc)}"))
 	end
 	
 	# the list of payees
