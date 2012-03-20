@@ -4,6 +4,7 @@ gem 'activerecord', :require => "active_record"
 gem 'sqlite3'
 gem 'ofac'
 gem 'mysql'
+gem 'mail'
 
 group :test do
 	gem 'ach'

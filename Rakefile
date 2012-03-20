@@ -1,8 +1,8 @@
 # Requirements
 #
 $LOAD_PATH.unshift File.expand_path(File.join('..', 'lib'), __FILE__)
-require 'ofac_checker'
 require 'yaml'
+require 'ofac_checker'
 # get the settings
 #
 settings_file = File.join(File.dirname(__FILE__), "config", "settings.yml")
@@ -18,13 +18,10 @@ namespace :ofac_checker do
 		staging_files = Dir.glob("#{staging_dir}/*.ach")
 		# update the OFAC database
 		#
-		Rake::Task["ofac:update_data"].execute
-		DocProcessor.new(staging_files[0], completed_dir).process unless staging_files.empty?
-		Rake::Task["ofac_checker:notify"].execute
-	end
-	
-	task :notify do
-		puts "COMPLETE!"
+		unless staging_files.empty?
+			Rake::Task["ofac:update_data"].execute
+			DocProcessor.new(staging_files[0], completed_dir, settings['email_smtp']).process
+		end
 	end
 
 end

@@ -7,3 +7,5 @@ email_smtp:
   domain: mail.gmail.com
   user_name: mr_test@gmail.com
   password: password
+  to: mr_test@gmail.com
+  subject: OFAC Task Complete

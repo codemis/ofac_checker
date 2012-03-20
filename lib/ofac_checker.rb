@@ -6,6 +6,7 @@ require 'mysql'
 require 'tempfile'
 require 'csv'
 require 'fileutils'
+require 'mail'
 
 # Setup ActiveRecord so it does not need Rails
 # http://snippets.aktagon.com/snippets/257-How-to-use-ActiveRecord-without-Rails
@@ -19,3 +20,4 @@ require 'schema'
 require 'ofac'
 require 'ofac_checker/ach_reader'
 require 'ofac_checker/doc_processor'
+require 'ofac_checker/mailer'

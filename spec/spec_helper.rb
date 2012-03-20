@@ -5,6 +5,12 @@ require 'yaml'
 #
 SETTINGS = YAML.load_file(File.join(File.expand_path(File.join('..'), __FILE__), "files", "config", "settings.yml"))
 Rake::Task["ofac:update_data"].execute
+# mailer in test method
+#
+Mail.defaults do
+  delivery_method :test
+end
+include Mail::Matchers
 
 RSpec.configure do |config|
 	

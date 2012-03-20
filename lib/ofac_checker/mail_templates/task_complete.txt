@@ -1,0 +1,7 @@
+Congratulations!
+
+  The OFAC processing is complete.  You will find the results attached to this email.  Hope it helps.
+  
+Sincerely,
+
+Your Friendly Neighborhood Ruby Script

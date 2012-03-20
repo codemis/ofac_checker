@@ -7,11 +7,13 @@ class DocProcessor
 	
 	# initialize the document processor class
 	#
-	def initialize(doc, result_location)
+	def initialize(doc, result_location, email_settings)
 		@ach_reader = AchReader.new(doc)
 		@doc = doc
 		@result_file = File.join(result_location, "#{File.basename(@doc, '.*')}_complete.csv")
+		@mailer = Mailer.new
 		@result_location = result_location
+		@email_settings = email_settings
 	end
 	
 	# process the document
@@ -31,6 +33,7 @@ class DocProcessor
 			end # each payee
 		end # CSV 
 		cleanup
+		@mailer.task_complete(@email_settings, @result_file)
 	end
 	
 	# cleanup the process

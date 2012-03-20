@@ -4,7 +4,7 @@ describe DocProcessor do
 
 	describe "#initialize" do
 		before(:each) do
-			@doc_processor = DocProcessor.new('ach_example.ach', 'spec/files/ach_example.ach')
+			@doc_processor = DocProcessor.new('ach_example.ach', 'spec/files/ach_example.ach', SETTINGS['email_smtp'])
 		end
 		
 		it "should set the doc file" do
@@ -24,7 +24,7 @@ describe DocProcessor do
 	describe "#payees" do
 		before(:each) do
 			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
-			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'])
+			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'], SETTINGS['email_smtp'])
 		end
 		
 		it { @doc_processor.payees.should include('Mickey Thompson') }
@@ -44,7 +44,7 @@ describe DocProcessor do
 		
 		before(:each) do
 			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
-			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'])
+			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'], SETTINGS['email_smtp'])
 			@doc_processor.process
 		end
 		
@@ -61,7 +61,7 @@ describe DocProcessor do
 	describe "final CSV" do
 		before(:each) do
 			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
-			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'])
+			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'], SETTINGS['email_smtp'])
 			@doc_processor.process
 			@payee_array = []
 			CSV.foreach("#{@doc_processor.result_file}") do |row|
@@ -87,7 +87,7 @@ describe DocProcessor do
 		
 		it "should remove the source file from the staging directory" do
 			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
-			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'])
+			@doc_processor = DocProcessor.new(staging_files[0], SETTINGS['locations']['completed'], SETTINGS['email_smtp'])
 			@doc_processor.cleanup
 			Dir.glob("#{SETTINGS['locations']['staging']}/*.ach").empty?.should === true
 		end

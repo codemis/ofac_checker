@@ -24,9 +24,15 @@ GEM
     diff-lcs (1.1.3)
     ffi (1.0.11)
     i18n (0.6.0)
+    mail (2.4.4)
+      i18n (>= 0.4.0)
+      mime-types (~> 1.16)
+      treetop (~> 1.4.8)
+    mime-types (1.17.2)
     multi_json (1.1.0)
     mysql (2.8.1)
     ofac (1.3.0)
+    polyglot (0.3.3)
     rspec (2.9.0)
       rspec-core (~> 2.9.0)
       rspec-expectations (~> 2.9.0)
@@ -38,6 +44,9 @@ GEM
     sqlite3 (1.3.5)
     sys-uname (0.9.0)
       ffi (>= 1.0.0)
+    treetop (1.4.10)
+      polyglot
+      polyglot (>= 0.3.1)
     tzinfo (0.3.32)
 
 PLATFORMS
@@ -49,6 +58,7 @@ DEPENDENCIES
   autotest
   autotest-fsevent
   autotest-growl
+  mail
   mysql
   ofac
   rspec (>= 2)
