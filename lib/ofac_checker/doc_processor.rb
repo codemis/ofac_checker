@@ -7,13 +7,14 @@ class DocProcessor
 	
 	# initialize the document processor class
 	#
-	def initialize(doc, result_location, email_settings)
-		@ach_reader = AchReader.new(doc)
+	def initialize(doc, result_location, settings)
+		ext = File.extname(doc)
+		@doc_reader = (ext == '.ach') ? AchReader.new(doc, settings['file']['acn']) : CsvReader.new(doc, settings['file']['csv'])
 		@doc = doc
 		@result_file = File.join(result_location, "#{File.basename(@doc, '.*')}_complete.csv")
 		@mailer = Mailer.new
 		@result_location = result_location
-		@email_settings = email_settings
+		@email_settings = settings['email_smtp']
 	end
 	
 	# process the document
@@ -45,7 +46,7 @@ class DocProcessor
 	# the list of payees
 	#
 	def payees
-		@ach_reader.payees
+		@doc_reader.payees
 	end
 	
 end

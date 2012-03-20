@@ -19,5 +19,6 @@ ActiveRecord::Base.establish_connection('development')
 require 'schema'
 require 'ofac'
 require 'ofac_checker/ach_reader'
+require 'ofac_checker/csv_reader'
 require 'ofac_checker/doc_processor'
 require 'ofac_checker/mailer'

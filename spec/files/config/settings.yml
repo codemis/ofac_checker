@@ -9,3 +9,10 @@ email_smtp:
   password: password
   to: mr_test@gmail.com
   subject: OFAC Task Complete
+file:
+  csv:
+    name_header: Name
+    name_structure: last_first
+  ach:
+    name_header: 
+    name_structure: first_last

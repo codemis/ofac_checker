@@ -17,6 +17,8 @@ RSpec.configure do |config|
 	config.before(:each) do
 		completed_ach_file = File.join("#{SETTINGS['locations']['completed']}", "example.ach")
 		FileUtils.mv(completed_ach_file, File.join("#{SETTINGS['locations']['staging']}", "example.ach")) if File.exists?(completed_ach_file)
+		completed_csv_file = File.join("#{SETTINGS['locations']['completed']}", "example.csv")
+		FileUtils.mv(completed_csv_file, File.join("#{SETTINGS['locations']['staging']}", "example.csv")) if File.exists?(completed_csv_file)
 	end
 	
 end

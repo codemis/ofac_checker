@@ -15,12 +15,12 @@ namespace :ofac_checker do
 		#
 		staging_dir = settings.nil? ? File.join(File.dirname(__FILE__), "file_bin", "staging") : settings['locations']['staging']
 		completed_dir = settings.nil? ? File.join(File.dirname(__FILE__), "file_bin", "completed") : settings['locations']['completed']
-		staging_files = Dir.glob("#{staging_dir}/*.ach")
+		staging_files = Dir.glob("#{staging_dir}/*.{csv,ach}")
 		# update the OFAC database
 		#
 		unless staging_files.empty?
 			Rake::Task["ofac:update_data"].execute
-			DocProcessor.new(staging_files[0], completed_dir, settings['email_smtp']).process
+			DocProcessor.new(staging_files[0], completed_dir, settings).process
 		end
 	end
 

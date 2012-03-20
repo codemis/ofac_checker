@@ -7,8 +7,9 @@ class AchReader
 	
 	# initialize the class
 	#
-	def initialize(file)
+	def initialize(file, settings)
 		@file = file
+		@settings = settings
 	end
 	
 	def payees

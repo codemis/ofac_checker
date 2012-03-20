@@ -5,8 +5,8 @@ describe AchReader do
 	describe "#initialize" do
 		
 		it "should set the file to process" do
-			ach_reader = AchReader.new('my_file.ach')
-			ach_reader.file.should == 'my_file.ach'
+			reader = AchReader.new('my_file.ach', SETTINGS['file']['ach'])
+			reader.file.should == 'my_file.ach'
 		end
 		
 	end
@@ -14,20 +14,20 @@ describe AchReader do
 	describe "#get_payees" do
 		before(:each) do
 			staging_files = Dir.glob("#{SETTINGS['locations']['staging']}/*.ach")
-			@ach_reader = AchReader.new(staging_files[0])
+			@reader = AchReader.new(staging_files[0], SETTINGS['file']['ach'])
 		end
 		
-		it { @ach_reader.payees.should include('Mickey Thompson') }
+		it { @reader.payees.should include('Mickey Thompson') }
 		
-		it { @ach_reader.payees.should include('Joe Dokes') }
+		it { @reader.payees.should include('Joe Dokes') }
 		
-		it { @ach_reader.payees.should include('Lana Turner') }
+		it { @reader.payees.should include('Lana Turner') }
 		
-		it { @ach_reader.payees.should include('Harriet Frodenhausen') }
+		it { @reader.payees.should include('Harriet Frodenhausen') }
 		
-		it { @ach_reader.payees.should include('Maxwell Sanduski') }
+		it { @reader.payees.should include('Maxwell Sanduski') }
 		
-		it { @ach_reader.payees.should include('John Dillinger') }
+		it { @reader.payees.should include('John Dillinger') }
 		
 	end
 	
