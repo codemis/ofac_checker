@@ -20,6 +20,7 @@ class DocProcessor
 	# process the document
 	#
 	def process
+		hits = 0
 		CSV.open("#{@result_file}", "w") do |csv|
 			csv << ['Payee','Score', 'Possible Result','Address']
 			payees.each do |payee|
@@ -27,6 +28,7 @@ class DocProcessor
 				if ofac.possible_hits.empty?
 					csv << ["#{payee}","#{ofac.score}", '','']
 				else
+					hits = hits+1
 					ofac.possible_hits.each do |potential|
 						csv << ["#{payee}","#{ofac.score}", "#{potential[:name]}","#{potential[:address]} - #{potential[:city]}"]
 					end
@@ -34,7 +36,7 @@ class DocProcessor
 			end # each payee
 		end # CSV 
 		cleanup
-		@mailer.task_complete(@email_settings, @result_file)
+		@mailer.task_complete(@email_settings, @result_file, hits)
 	end
 	
 	# cleanup the process
