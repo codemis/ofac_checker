@@ -20,6 +20,11 @@ namespace :ofac_checker do
 		#
 		Rake::Task["ofac:update_data"].execute
 		DocProcessor.new(staging_files[0], completed_dir).process unless staging_files.empty?
+		Rake::Task["ofac_checker:notify"].execute
+	end
+	
+	task :notify do
+		puts "COMPLETE!"
 	end
 
 end

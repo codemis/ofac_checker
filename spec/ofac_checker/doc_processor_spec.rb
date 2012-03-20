@@ -91,6 +91,7 @@ describe DocProcessor do
 			@doc_processor.cleanup
 			Dir.glob("#{SETTINGS['locations']['staging']}/*.ach").empty?.should === true
 		end
+		
 	end
 	
 end
