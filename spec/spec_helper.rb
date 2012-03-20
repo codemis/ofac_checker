@@ -4,7 +4,7 @@ require 'yaml'
 # get the settings
 #
 SETTINGS = YAML.load_file(File.join(File.expand_path(File.join('..'), __FILE__), "files", "config", "settings.yml"))
-# Rake::Task["ofac:update_data"].execute
+Rake::Task["ofac:update_data"].execute
 
 RSpec.configure do |config|
 	
