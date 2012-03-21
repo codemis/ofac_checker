@@ -1,5 +1,7 @@
 locations:
+  # The place to look for files to be scanned
   staging: /path/to/staging/area
+  # The place to put results
   completed: /path/to/completed/results/area
 email_smtp:
   address: smtp.google.com
