@@ -12,13 +12,13 @@ class Mailer
 		  body     File.read(File.join(File.dirname(__FILE__), 'mail_templates', 'task_complete.txt'))
 		  add_file :filename => 'results.csv', :content => File.read(completed_file) if hits != 0
 		end
-		Mail.defaults do
-		  delivery_method :smtp, :address    => settings['address'],
-		                          :port       => settings['port'],
-		                          :user_name  => settings['user_name'],
-		                          :password   => settings['password'],
-		                          :enable_ssl => true
-		end
+		# Mail.defaults do
+		#   delivery_method :smtp, :address    => settings['address'],
+		#                           :port       => settings['port'],
+		#                           :user_name  => settings['user_name'],
+		#                           :password   => settings['password'],
+		#                           :enable_ssl => true
+		# end
 		mail.deliver
   end
 

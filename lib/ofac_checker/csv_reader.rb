@@ -26,11 +26,7 @@ class CsvReader
 			payee_column.each do |row|
 				payees.push "#{row.downcase.strip.gsub(/\b\w/){$&.upcase}}" if row != @settings['name_header']
 			end
-			if @settings['name_structure'] == 'last_first'
-				payees.collect {|x| names = x.split; "#{names.last} #{names.first}" }
-			else
-				payees
-			end
+			payees
 		end
 	
 end

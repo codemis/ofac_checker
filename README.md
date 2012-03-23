@@ -33,7 +33,6 @@ rake ofac_checker:process
 * set **completed** to the location where your results file will be stored (default: file_bin/completed)
 * set **email_smtp** to the email smtp settings of your email server in order to get an email upon completion
 * set **file > csv > name_header** to the header of the column that the CSV uses to list the payee names
-* set **file > csv > name_structure** to name direction either first_last or last_first (default: first_last)
 * set **file > ach** currently does not do anything,  because ACH files are standardized
 
 
