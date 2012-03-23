@@ -13,7 +13,7 @@ class Mailer
 		  add_file :filename => 'results.csv', :content => File.read(completed_file) if hits != 0
 		end
 		Mail.defaults do
-		  retriever_method :pop3, :address    => settings['address'],
+		  delivery_method :smtp, :address    => settings['address'],
 		                          :port       => settings['port'],
 		                          :user_name  => settings['user_name'],
 		                          :password   => settings['password'],
